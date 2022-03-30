@@ -1,4 +1,15 @@
-﻿/*Desafio de hoje:
+﻿using projetoTurismo.Classess;
+namespace projetoTurismo;
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        
+    }
+}
+
+/*Desafio de hoje:
 
 Seu cliente é uma agência de turismo que vende pacotes de viagem 
 ou somente passagens aéreas. 
