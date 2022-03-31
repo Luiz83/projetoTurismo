@@ -2,28 +2,29 @@ namespace projetoTurismo.Classess
 {
     public class Passagens
     {
-        public string Empresa { get; set; }
-        public bool PrimeiraClasse { get; set; }
+        
+        public int PrimeiraClasse { get; set; }
         public int Assento { get; set; }
         public double Valor { get; set; }
-        public string HoraEmbarque { get; set; }
-        public string DataPassagem { get; set; }
-        public Passageiro Passageiro{get;set;}
+        public Passageiro Passageiro { get; set; }
+        public Voo Voo { get; set; }
 
-        public Passagens(string empresa, string horaembarque, string datapassagem, bool primeiraclasse, double valor, int assento, Passageiro passageiro)
+        public Passagens(int primeiraclasse, double valor, int assento, Passageiro passageiro)
         {
-            Empresa = empresa;
-            HoraEmbarque = horaembarque;
-            DataPassagem = datapassagem;
             PrimeiraClasse = primeiraclasse;
             Valor = CalcularValor(valor);
             Assento = assento;
-            Passageiro =passageiro;
+            Passageiro = passageiro;
+            Voo = new Voo ("Latam", 864, DateTime.Parse("22:00:00"), DateTime.Parse("03/04/2022"), "São Paulo", "Fortaleza");
+        }
+
+        public string BuscarResumo (){
+            return $"Passagem em nome de {Passageiro} na poltrona {Assento} no valor de R${Valor}";
         }
 
         private double CalcularValor(double valor)
         {
-            if (PrimeiraClasse == true)
+            if (PrimeiraClasse == 1)
             {
                 return valor = valor * 1.5;
             }

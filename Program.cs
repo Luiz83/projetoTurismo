@@ -5,7 +5,8 @@ public class Program
 {
     static void Main(string[] args)
     {
-        
+        Vendas Venda = new Vendas();
+        Venda.IniciarVenda();
     }
 }
 
@@ -21,7 +22,7 @@ café da manhã (que possui valor) e passeios locais (que possuem valor,
 local do passeio e horário). 
 Já a passagem aérea contém a empresa aérea, classe, poltrona, valor, 
 horário de embarque, data da passagem, 
-voo (que deverá ter numero, horário, destino e origem) 
+voo (que deverá ter numero, hestiorário, dno e origem) 
 e a escala (formada pela duração, local e horário de chegada) 
 e qualquer outro atributo que julgar necessário. 
 Portanto as vendas poderão conter uma ou várias passagens aéreas 

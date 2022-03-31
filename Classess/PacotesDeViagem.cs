@@ -4,6 +4,7 @@ namespace projetoTurismo.Classess
     {
         public Passagens PassagemIda { get; set; }
         public Passagens PassagemVolta { get; set; }
+        public Passageiro Titular { get; set; }
         public double ValorPacote { get; set; }
         public List<Servicos> ServicosPacote { get; set; }
 
@@ -11,6 +12,7 @@ namespace projetoTurismo.Classess
         {
             PassagemIda = passagemIda;
             PassagemVolta = passagemVolta;
+            Titular = PassagemIda.Passageiro;
         }
 
         public void AdicionarServicos()
@@ -50,7 +52,7 @@ namespace projetoTurismo.Classess
                 default:
                     Console.WriteLine("Opção selecionada inválida, tente de novo");
                     EscolherServico();
-                    break;
+                    return;
             }
         }
 
@@ -75,8 +77,12 @@ namespace projetoTurismo.Classess
                 default:
                     Console.WriteLine("Opção selecionada inválida, tente de novo");
                     EscolherPasseio();
-                    break;
+                    return;
             }
+        }
+
+        public string BuscarResumo (){
+            return $"Passagem em nome de {Titular} no valor de R${ValorPacote}";
         }
 
         private double CalcularValor()
