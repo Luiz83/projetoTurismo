@@ -10,6 +10,7 @@ namespace projetoTurismo.Classess
 
         public PacotesDeViagem(Passagens passagemIda, Passagens passagemVolta)
         {
+            ServicosPacote = new List<Servicos>();
             PassagemIda = passagemIda;
             PassagemVolta = passagemVolta;
             Titular = PassagemIda.Passageiro;
@@ -82,7 +83,7 @@ namespace projetoTurismo.Classess
         }
 
         public string BuscarResumo (){
-            return $"Passagem em nome de {Titular} no valor de R${ValorPacote}";
+            return $"Pacote de viagem em nome de {Titular.PrimeiroNome()} no valor de R${ValorPacote}";
         }
 
         private double CalcularValor()
@@ -93,7 +94,7 @@ namespace projetoTurismo.Classess
             {
                 total = total + ServicosPacote[i].Valor;
             }
-            return total;
+            return Math.Abs(total);
         }
     }
 }

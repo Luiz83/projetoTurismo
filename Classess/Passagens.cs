@@ -19,7 +19,7 @@ namespace projetoTurismo.Classess
         }
 
         public string BuscarResumo (){
-            return $"Passagem em nome de {Passageiro} na poltrona {Assento} no valor de R${Valor}";
+            return $"Passagem em nome de {Passageiro.PrimeiroNome()} na poltrona {Assento} no valor de R${Valor}";
         }
 
         private double CalcularValor(double valor)
@@ -30,7 +30,7 @@ namespace projetoTurismo.Classess
             }
             else
             {
-                return valor;
+                return Math.Abs(valor);
             }
         }
 

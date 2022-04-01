@@ -9,6 +9,12 @@ namespace projetoTurismo.Classess
         public Passageiro Titular { get; set; }
         public double ValorTotal { get; set; }
 
+        public Vendas()
+        {
+            CarrinhoPacotes = new List<PacotesDeViagem>();
+            CarrinhoPassagens = new List<Passagens>();
+        }
+
         public void IniciarVenda()
         {
             Console.WriteLine("Bem vindo a DODEV Turismo");
@@ -19,13 +25,27 @@ namespace projetoTurismo.Classess
 
         public Passageiro RequisitarDadosCliente()
         {
-            Console.WriteLine("Digite seu nome");
-            var nome = Console.ReadLine();
+
+            var nome = RequisitarNome();
             Console.WriteLine("Digite seu CPF. Somente números!");
             var cpf = Console.ReadLine();
             Console.WriteLine("Informe sua data de nascimento no formato mês/dia/ano");
             var dataDeNascimento = DateTime.Parse(Console.ReadLine());
             return new Passageiro(nome, cpf, dataDeNascimento);
+        }
+
+        public string RequisitarNome()
+        {
+            do
+            {
+                Console.WriteLine("Digite seu nome");
+                var nome = Console.ReadLine();
+                if ((nome.Length >= 5) & (nome.Length <= 55))
+                {
+                    return nome;
+                }
+                Console.WriteLine("Seu nome precisa ter entre 5 e 55 caracteres, tente novamente!");
+            } while (true);
         }
 
         public void EscolherProduto()
@@ -53,7 +73,8 @@ namespace projetoTurismo.Classess
                     Console.WriteLine("Você inseriu uma opcao invalida");
                 }
                 Console.WriteLine("Se deseja continuar comprando tecle 1, se deseja finalizar as compras tecle 2");
-            }while (opcaoWhile == 1);
+                opcaoWhile = int.Parse(Console.ReadLine());
+            } while (opcaoWhile == 1);
         }
 
         public void EscolherTitular()
@@ -78,7 +99,7 @@ namespace projetoTurismo.Classess
 
         public Passagens EscolherPassagem()
         {
-            Console.WriteLine("Voce deseja um assento na primeira classe?");
+            Console.WriteLine("Voce deseja um assento na primeira classe? 1 -Sim / 2 - Não");
             var primeiraclasse = int.Parse(Console.ReadLine());
             Console.WriteLine("Qual assento você deseja?");
             var assento = int.Parse(Console.ReadLine());
@@ -116,6 +137,7 @@ namespace projetoTurismo.Classess
             }
             ValorTotal = CalcularValorTotal();
             Console.WriteLine($"O valor total da sua compra é de R${ValorTotal}");
+            VerificarDesconto();
         }
 
         public void DefinirMetodoDePagamento()
@@ -123,7 +145,7 @@ namespace projetoTurismo.Classess
             Console.WriteLine("Qual será o método de pagamento?");
             Console.WriteLine(" VISTA ou CREDITO ou DEBITO ");
             string metodoDePagamento = Console.ReadLine();
-            if ((metodoDePagamento == "VISTA") || (metodoDePagamento != "CREDITO") || (metodoDePagamento != "DEBITO"))
+            if ((metodoDePagamento == "VISTA") || (metodoDePagamento == "CREDITO") || (metodoDePagamento == "DEBITO"))
             {
                 FormaDePagamento = metodoDePagamento;
             }
@@ -148,7 +170,21 @@ namespace projetoTurismo.Classess
             {
                 total = total + CarrinhoPassagens[i].Valor;
             }
-            return total;
+            return Math.Abs(total);
+        }
+
+        public void VerificarDesconto()
+        {
+            if (ValorTotal > 5000)
+            {
+                ValorTotal = ValorTotal * 0.9;
+                Console.WriteLine($"Desconto de 10% aplicado o valor final é de R${ValorTotal}");
+            }
+            else if (ValorTotal > 500)
+            {
+                ValorTotal = ValorTotal * 0.95;
+                Console.WriteLine($"Desconto de 5% aplicado o valor final é de R${ValorTotal}");
+            }
         }
     }
 }

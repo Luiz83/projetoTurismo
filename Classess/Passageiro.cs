@@ -12,6 +12,11 @@ namespace projetoTurismo.Classess
             Cpf = cpf;
             DataDeNascimento = dataDeNascimento;
         }
+
+        public string PrimeiroNome(){
+            string[] primeiroNome = Nome.Split(' ');
+            return primeiroNome[0];
+        }
     }
 }
 

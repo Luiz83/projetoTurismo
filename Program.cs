@@ -31,14 +31,14 @@ além da forma de pagamento (dinheiro ou cartão de débito/crédito),
 dos dados do cliente (nome, cpf e nascimento) e do valor total. 
 Considere também dados comuns para armazenamento de dados dos funcionários.
 
-⦁	Garanta que os valores monetários não aceitem valores negativos;
+⦁	Garanta que os valores monetários não aceitem valores negativos; uso do método Math.Abs()
 ⦁	A Passagem deve possuir um método getResumo(), 
-que irá exibir somente nome do cliente, poltrona e valor;
+que irá exibir somente nome do cliente, poltrona e valor;         feito
 ⦁	Para o atributo forma de pagamento garanta que seja 
-armazenado somente “VISTA” ou “CRÉDITO” ou “DÉBITO”.
-⦁	Para o atributo nome do cliente, crie um método para retornar 
+armazenado somente “VISTA” ou “CRÉDITO” ou “DÉBITO”.              feito
+⦁	Para o atributo nome do cliente, crie um método para retornar  feito
 somente o primeiro nome.
-⦁	Garanta que o nome do cliente tenha entre 5 e 55 caracteres. 
+⦁	Garanta que o nome do cliente tenha entre 5 e 55 caracteres.   feito
 Caso a regra seja quebrada considere o valor “NOME INVALIDO”.
 ⦁	Crie um método aplicar desconto() que deverá atualizar o atributo
  total com 5% de desconto se o valor do total estiver entre 500 e 5000, se 
